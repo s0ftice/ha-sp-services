@@ -2,6 +2,10 @@
 
 Unofficial Home Assistant integration for electricity consumption from SP Services Singapore. It fetches the 30-minute readings shown in the SP Utilities app and portal, then publishes hourly usage statistics for Home Assistant's Energy dashboard.
 
+![SP Services electricity consumption in Home Assistant's Energy dashboard](images/home-assistant-energy-dashboard.png)
+
+*SP Services electricity consumption in the Home Assistant Energy dashboard.*
+
 **Note:** Readings are typically 6-8 hours delayed.
 
 ## What it does
