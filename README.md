@@ -1,4 +1,4 @@
-# SP Services Singapore
+# SP Services Singapore for Home Assistant
 
 Unofficial Home Assistant integration for electricity consumption from SP Services Singapore. It fetches the 30-minute readings shown in the SP Utilities app and portal, then publishes hourly usage statistics for Home Assistant's Energy dashboard.
 
