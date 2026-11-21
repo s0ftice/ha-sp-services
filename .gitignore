@@ -1,0 +1,9 @@
+# Local reverse-engineering probe and Home Assistant research notes
+electricity_probe.py
+SP_SERVICES_HA_README.md
+work/
+outputs/
+
+# Python cache files
+__pycache__/
+*.py[cod]

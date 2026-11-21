@@ -1,0 +1,42 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect your SP Services account",
+        "description": "Sign in with the email and password you use for the SP Utilities app or SP Services portal. Enter the numeric electricity account number for the meter you want to monitor; you can find it on an SP bill or in your account details.\n\nSP sends readings in 30-minute intervals, but they can arrive several hours after usage. Home Assistant checks every 30 minutes and makes hourly totals available for you to add to the Energy dashboard after setup.\n\nYour password is used only to obtain the SP session and is not saved. Access and refresh tokens are saved in this Home Assistant integration so it can stay signed in. SP may require sign-in again if it revokes the session.",
+        "data": {
+          "username": "Email address",
+          "password": "SP account password",
+          "account_number": "Electricity account number (numeric)"
+        }
+      },
+      "mfa": {
+        "title": "SMS verification",
+        "description": "An SMS verification code has been requested from SP. If no code arrives, close this setup and start again to request a new one."
+      },
+      "sms_code": {
+        "title": "Enter SMS code",
+        "description": "Enter the code SP sent to your enrolled phone. It is used once to complete sign-in and is not saved.",
+        "data": {
+          "sms_otp": "SMS OTP"
+        }
+      }
+    },
+    "error": {
+      "invalid_account": "Enter the numeric electricity account number.",
+      "cannot_connect": "Could not connect to SP Services. Check your connection and try again.",
+      "no_sms_factor": "SP did not offer an SMS verification method for this account.",
+      "invalid_auth": "SP rejected the login or SMS code. Start setup again and request a new code."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polling interval",
+        "data": {
+          "poll_minutes": "Minutes between updates"
+        }
+      }
+    }
+  }
+}
