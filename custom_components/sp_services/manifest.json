@@ -7,5 +7,5 @@
   "issue_tracker": "https://github.com/s0ftice/ha-sp-services/issues",
   "iot_class": "cloud_polling",
   "requirements": [],
-  "version": "1.0.0"
+  "version": "1.0.1"
 }

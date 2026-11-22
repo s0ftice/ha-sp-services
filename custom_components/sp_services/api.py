@@ -56,13 +56,16 @@ class SPApi:
                 except (ValueError, ClientError):
                     body = {}
                 if response.status >= 400:
-                    code = body.get("error") or body.get("code") or "unknown"
+                    error_body = body if isinstance(body, dict) else {}
+                    code = error_body.get("error") or error_body.get("code") or "unknown"
                     if response.status == 403 and code in {"mfa_required", "mfa_registration_required"}:
                         return body
                     if response.status in (401, 403) and code in {
                         "invalid_grant", "invalid_token", "invalid_claim"
                     }:
                         raise SPAuthError(f"SP authentication rejected the request ({code})")
+                    if response.status == 401:
+                        raise SPAuthError("SP authentication rejected the request (HTTP 401)")
                     raise SPApiError(f"SP request failed (HTTP {response.status}, {code})")
                 return body
         except (ClientError, TimeoutError) as err:
@@ -134,6 +137,10 @@ class SPApi:
                     body = await response.json(content_type=None)
                 except (ValueError, ClientError):
                     body = {}
+                if not isinstance(body, dict):
+                    body = {}
+                if response.status >= 500:
+                    raise SPApiError(f"SP identity service failed (HTTP {response.status})")
                 if response.status >= 400 and body.get("error") not in {
                     "mfa_required", "mfa_registration_required"
                 }:

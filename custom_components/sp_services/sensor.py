@@ -64,7 +64,7 @@ class SPLatestIntervalSensor(SPBaseSensor):
 
     _attr_native_unit_of_measurement = UnitOfEnergy.KILO_WATT_HOUR
     _attr_device_class = SensorDeviceClass.ENERGY
-    _attr_state_class = SensorStateClass.MEASUREMENT
+    _attr_state_class = SensorStateClass.TOTAL
 
     def __init__(self, coordinator, entry):
         super().__init__(coordinator, entry, "latest_interval", "SP Electricity Latest Interval")
